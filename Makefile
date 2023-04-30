@@ -5,7 +5,7 @@ REPO_NAME = _defradb
 REPO = git@github.com:sourcenetwork/defradb.git
 PROTO_DIR = net/api/pb
 PROTO_FILE = api.proto
-PYTHON_OUT = rpc
+PYTHON_OUT = src/defradb/rpc
 
 protobufs: clone
 	mkdir -p $(PYTHON_OUT)

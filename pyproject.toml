@@ -1,6 +1,6 @@
 [project]
 name = "defradb"
-version = "0.1.0"
+version = "0.1.2"
 description = "DefraDB Python client"
 authors = [
     { name = "Orpheus Lummis", email = "o@orpheuslummis.info" }
@@ -28,4 +28,4 @@ managed = true
 dev-dependencies = ["black~=23.3.0", "ruff~=0.0.263", "twine~=4.0.2"]
 
 [tool.pyright]
-exclude = ["src/rpc/**"]
+exclude = ["src/defradb/rpc/**"]
