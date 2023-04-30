@@ -1,8 +1,8 @@
 import json
+import logging
 from dataclasses import dataclass
 
 import base58
-import gql.transport.exceptions as gql_exceptions
 import grpc
 import multiaddr
 import multiaddr.protocols
@@ -43,7 +43,7 @@ class DefraClient:
         url = f"{self.cfg.scheme}{self.cfg.api_url}{ROUTE_GRAPHQL}"
         self.gql_sync_transport = RequestsHTTPTransport(url=url)
 
-    def request(self, request: DocumentNode) -> dict | None:
+    def request(self, request: DocumentNode):
         """
         Execute a graphql request against the DefraDB node.
         """
@@ -51,13 +51,10 @@ class DefraClient:
         client = Client(
             transport=self.gql_sync_transport, fetch_schema_from_transport=False
         )
-        try:
-            response = client.execute(request)
-        except gql_exceptions.TransportQueryError as e:
-            raise Exception("Failed to execute graphql request", e)
+        response = client.execute(request)
         return response
 
-    def load_schema(self, schema: str) -> dict | None:
+    def load_schema(self, schema: str):
         """
         Load a schema into the DefraDB node.
         """
@@ -66,7 +63,10 @@ class DefraClient:
         response_json = response.json()
         if "errors" in response_json:
             for error in response_json["errors"]:
-                if "schema type already exists" not in error["message"]:
+                schema_already_exists = "schema type already exists" in error["message"]
+                if schema_already_exists:
+                    logging.info("Schema already exists")
+                else:
                     raise Exception("Failed to load schema", error)
         return response_json
 

@@ -9,6 +9,15 @@ dependencies = ["grpcio~=1.54.0", "requests~=2.29.0", "grpcio-tools~=1.54.0", "m
 readme = "README.md"
 requires-python = ">= 3.10"
 license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Database",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/sourcenetwork/defradb-client-py"
+"Bug Tracker" = "https://github.com/sourcenetwork/defradb-client-py/issues"
 
 [build-system]
 requires = ["hatchling"]
@@ -16,7 +25,7 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = ["black~=23.3.0", "isort~=6.0.0b2"]
+dev-dependencies = ["black~=23.3.0", "ruff~=0.0.263", "twine~=4.0.2"]
 
 [tool.pyright]
 exclude = ["src/rpc/**"]
