@@ -8,7 +8,6 @@ import multiaddr
 import multiaddr.protocols
 import requests
 from gql import Client, gql
-from gql.transport.aiohttp import AIOHTTPTransport
 from gql.transport.requests import RequestsHTTPTransport
 from graphql import DocumentNode
 
@@ -34,7 +33,7 @@ class DefraClient:
     """
     Client for DefraDB, providing methods for interacting with the DefraDB node.
     Interactions with DefraDB via the graphql endpoint use the Defra query language, by
-    passing a valid gql query object.s
+    passing a valid gql query object.
     Interactions with DefraDB via the rpc endpoint use the Defra protobuf API.
     This is the synchronous client.
     """
@@ -43,7 +42,6 @@ class DefraClient:
         self.cfg: DefraConfig = cfg
         url = f"{self.cfg.scheme}{self.cfg.api_url}{ROUTE_GRAPHQL}"
         self.gql_sync_transport = RequestsHTTPTransport(url=url)
-        self.gql_async_transport = AIOHTTPTransport(url=url)
 
     def request(self, request: DocumentNode) -> dict | None:
         """

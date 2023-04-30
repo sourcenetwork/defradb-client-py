@@ -1,7 +1,9 @@
 # A minimal example of how to use DefraClient.
 
 import uuid
+
 from gql import gql
+
 from .defradb import (
     DefraClient,
     DefraConfig,

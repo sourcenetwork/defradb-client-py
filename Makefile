@@ -1,3 +1,6 @@
+# Generating Python gRPC code from a protobuf definition file
+# from the latest commit of DefraDB's develop branch
+
 REPO_NAME = _defradb
 REPO = git@github.com:sourcenetwork/defradb.git
 PROTO_DIR = net/api/pb
