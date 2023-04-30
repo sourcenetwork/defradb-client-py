@@ -4,7 +4,7 @@ import uuid
 
 from gql import gql
 
-from defradb import (
+from src.defradb import (
     DefraClient,
     DefraConfig,
     dict_to_create_query,

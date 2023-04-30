@@ -16,3 +16,8 @@ clone:
 		git clone $(REPO) $(REPO_NAME) || true; \
 	fi
 	cd $(REPO_NAME) && git pull origin master && cd -
+
+publish:
+	rm -rf ./dist
+	rye build
+	twine upload dist/*

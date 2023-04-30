@@ -24,7 +24,7 @@ class DefraConfig:
     Configuration for DefraDB client.
     """
 
-    api_url: str = "localhost:9181/api/v0"
+    api_url: str = "localhost:9181/api/v0/"
     tcp_multiaddr: str = "localhost:9161"
     scheme = "http://"
 
