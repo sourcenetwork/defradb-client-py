@@ -1,0 +1,22 @@
+[project]
+name = "defradb"
+version = "0.1.0"
+description = "DefraDB Python client"
+authors = [
+    { name = "Orpheus Lummis", email = "o@orpheuslummis.info" }
+]
+dependencies = ["grpcio~=1.54.0", "requests~=2.29.0", "grpcio-tools~=1.54.0", "multiaddr~=0.0.9", "gql~=3.5.0b3", "aiohttp~=3.8", "requests_toolbelt~=0.10.1"]
+readme = "README.md"
+requires-python = ">= 3.10"
+license = { text = "MIT" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = ["black~=23.3.0", "isort~=6.0.0b2"]
+
+[tool.pyright]
+exclude = ["src/rpc/**"]
